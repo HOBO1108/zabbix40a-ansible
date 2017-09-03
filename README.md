@@ -78,8 +78,6 @@ vi zabbix34/inventory/inventory.ini
 
 # ansible-playbook実行
 ```
-git clone https://github.com/mishikawan/zabbix34-ansible.git
-cd zabbix34-ansible/
 ansible-playbook -i zabbix34/inventory/inventory.ini zabbix34/site.yml
 ```
 
