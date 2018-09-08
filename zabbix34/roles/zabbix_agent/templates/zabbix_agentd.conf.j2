@@ -95,7 +95,8 @@ LogFileSize=0
 # Default:
 # Server=
 
-Server={{ item.zabbix_server_ip }}
+#Server={{ item.zabbix_server_ip }}
+Server=127.0.0.1
 
 ### Option: ListenPort
 #	Agent will listen on this port for connections from the server.
@@ -136,7 +137,7 @@ Server={{ item.zabbix_server_ip }}
 # Default:
 # ServerActive=
 
-ServerActive={{ item.zabbix_server_ip }}
+ServerActive=127.0.0.1
 
 ### Option: Hostname
 #	Unique, case sensitive hostname.
@@ -155,7 +156,7 @@ ServerActive={{ item.zabbix_server_ip }}
 # Default:
 # HostnameItem=system.hostname
 
-HostnameItem=system.hostname
+# HostnameItem=system.hostname
 
 ### Option: HostMetadata
 #	Optional parameter that defines host metadata.
