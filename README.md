@@ -18,18 +18,18 @@ CentOS7環境に、Zabbix-server(rpm)とZabbix-agent(rpm)の機能を自動設�
 	+ zabbix-repoの登録
 
 * zabbix-server
-	+ zabbix3.4(zabbix official repo)
+	+ beta-zabbix4.0 (zabbix official repo)
 	+ mariadb( DB名"zabbix"のユーザ"zabbix"のパスワード指定可能)
 	+ httpd
 	+ snmptrapd( snmptrapの受付コミュニティ名指定可能)
 	+ snmptt(epel repo)
 
 * zabbix-agent
-	+ zabbix-agent3.4( zabbix-serverのIP指定可能)
+	+ zabbix-agent4.0( zabbix-serverのIP指定可能)
 
 # 指定可能なインストール先
 
-* zabbix34/inventory/inventory.ini
+* zabbix40a/inventory/inventory.ini
 
 ```
 [zabbix_servers] ... zabbix server
@@ -38,7 +38,7 @@ CentOS7環境に、Zabbix-server(rpm)とZabbix-agent(rpm)の機能を自動設�
 
 # 指定可能な設定内容
 
-* zabbix34/roles/common/vars/main.yml
+* zabbix40a/roles/common/vars/main.yml
 
 ```
 common:
@@ -50,7 +50,7 @@ common:
 zabbix_setup:
   - zabbix_mariadb_password: "password" ... MariaDB, zabbix's password
     snmptrap_community: "public"     ... snmptrapd 's community name
-    zabbix_server_ip: "192.168.10.86" ... Zabbix server's IP
+    zabbix_server_ip: "192.168.0.56" ... Zabbix server's IP
 ```
 
 ### 簡単な実施方法
@@ -58,27 +58,27 @@ zabbix_setup:
 # ansibleが稼働するサーバで、git clone実施
 
 ```
-git clone https://github.com/mishikawan/zabbix34-ansible.git
-cd zabbix34-ansible/
+git clone https://github.com/HOBO1108/zabbix40a-ansible.git
+cd zabbix40a-ansible/
 ```
 
 # Zabbix用IPアドレスを設定
 
-- 192.168.10.86の部分を、Zabbix用IPアドレスに変更してください。
-- 初期は、192.168.10.86にZabbixServer/Agentを導入するよう記載している。
+- 192.168.0.56の部分を、Zabbix用IPアドレスに変更してください。
+- 初期は、192.168.0.56にZabbixServer/Agentを導入するよう記載している。
 
 ```
-vi zabbix34/inventory/inventory.ini
+vi zabbix40a/inventory/inventory.ini
 
 [zabbix_servers]
-192.168.10.86 ansible_ssh_user=root
+192.168.0.56 ansible_ssh_user=root
 [zabbix_agents]
-192.168.10.86 ansible_ssh_user=root
+192.168.0.56 ansible_ssh_user=root
 ```
 
 # ansible-playbook実行
 ```
-ansible-playbook -i zabbix34/inventory/inventory.ini zabbix34/site.yml
+ansible-playbook -i zabbix40a/inventory/inventory.ini zabbix40a/site.yml
 ```
 
 無事完了すると、zabbixサーバ上でzabbixサーバが稼働しています。以下、URLでアクセス可能。

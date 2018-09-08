@@ -1,4 +1,0 @@
-- fail: msg="Sorry. the playbook can only on RHEL7(Centos7)."
-  when: 
-    - ( ansible_os_family != 'RedHat' ) or
-      ( ansible_distribution_major_version != '7' )
